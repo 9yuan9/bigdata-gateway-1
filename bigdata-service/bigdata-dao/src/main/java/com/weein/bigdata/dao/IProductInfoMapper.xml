@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weein.bigdata.dao.IProductInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.weein.bigdata.base.entity.ProductInfoDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_content" property="productContent" jdbcType="VARCHAR" />
+    <result column="product_icon" property="productIcon" jdbcType="VARCHAR" />
+    <result column="product_type" property="productType" jdbcType="INTEGER" />
+    <result column="product_price" property="productPrice" jdbcType="INTEGER" />
+    <result column="original_price" property="originalPrice" jdbcType="INTEGER" />
+    <result column="cost_price" property="costPrice" jdbcType="INTEGER" />
+    <result column="product_status" property="productStatus" jdbcType="INTEGER" />
+    <result column="product_flag" property="productFlag" jdbcType="VARCHAR" />
+    <result column="preferential_type" property="preferentialType" jdbcType="INTEGER" />
+    <result column="operator_type" property="operatorType" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="card_type" property="cardType" jdbcType="VARCHAR" />
+    <result column="card_code" property="cardCode" jdbcType="VARCHAR" />
+    <result column="channel_number" property="channelNumber" jdbcType="VARCHAR" />
+    <result column="interface_type" property="interfaceType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="stock_number" property="stockNumber" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="number_type" property="numberType" jdbcType="INTEGER" />
+    <result column="expiry_date" property="expiryDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_id, product_name, product_content, product_icon, product_type, product_price, 
+    original_price, cost_price, product_status, product_flag, preferential_type, operator_type, 
+    item_id, card_type, card_code, channel_number, interface_type, create_time, stock_number, 
+    update_time, number_type, expiry_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_PRODUCT_INFO
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_PRODUCT_INFO
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.weein.bigdata.base.entity.ProductInfoDO" >
+    insert into T_PRODUCT_INFO (id, product_id, product_name, 
+      product_content, product_icon, product_type, 
+      product_price, original_price, cost_price, 
+      product_status, product_flag, preferential_type, 
+      operator_type, item_id, card_type, 
+      card_code, channel_number, interface_type, 
+      create_time, stock_number, update_time, 
+      number_type, expiry_date)
+    values (#{id,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productContent,jdbcType=VARCHAR}, #{productIcon,jdbcType=VARCHAR}, #{productType,jdbcType=INTEGER}, 
+      #{productPrice,jdbcType=INTEGER}, #{originalPrice,jdbcType=INTEGER}, #{costPrice,jdbcType=INTEGER}, 
+      #{productStatus,jdbcType=INTEGER}, #{productFlag,jdbcType=VARCHAR}, #{preferentialType,jdbcType=INTEGER}, 
+      #{operatorType,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR}, 
+      #{cardCode,jdbcType=VARCHAR}, #{channelNumber,jdbcType=VARCHAR}, #{interfaceType,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{stockNumber,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{numberType,jdbcType=INTEGER}, #{expiryDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weein.bigdata.base.entity.ProductInfoDO" >
+    insert into T_PRODUCT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productContent != null" >
+        product_content,
+      </if>
+      <if test="productIcon != null" >
+        product_icon,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="productPrice != null" >
+        product_price,
+      </if>
+      <if test="originalPrice != null" >
+        original_price,
+      </if>
+      <if test="costPrice != null" >
+        cost_price,
+      </if>
+      <if test="productStatus != null" >
+        product_status,
+      </if>
+      <if test="productFlag != null" >
+        product_flag,
+      </if>
+      <if test="preferentialType != null" >
+        preferential_type,
+      </if>
+      <if test="operatorType != null" >
+        operator_type,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="cardType != null" >
+        card_type,
+      </if>
+      <if test="cardCode != null" >
+        card_code,
+      </if>
+      <if test="channelNumber != null" >
+        channel_number,
+      </if>
+      <if test="interfaceType != null" >
+        interface_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="stockNumber != null" >
+        stock_number,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="numberType != null" >
+        number_type,
+      </if>
+      <if test="expiryDate != null" >
+        expiry_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productContent != null" >
+        #{productContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productIcon != null" >
+        #{productIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null" >
+        #{productPrice,jdbcType=INTEGER},
+      </if>
+      <if test="originalPrice != null" >
+        #{originalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice,jdbcType=INTEGER},
+      </if>
+      <if test="productStatus != null" >
+        #{productStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productFlag != null" >
+        #{productFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="preferentialType != null" >
+        #{preferentialType,jdbcType=INTEGER},
+      </if>
+      <if test="operatorType != null" >
+        #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardCode != null" >
+        #{cardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelNumber != null" >
+        #{channelNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceType != null" >
+        #{interfaceType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stockNumber != null" >
+        #{stockNumber,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numberType != null" >
+        #{numberType,jdbcType=INTEGER},
+      </if>
+      <if test="expiryDate != null" >
+        #{expiryDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weein.bigdata.base.entity.ProductInfoDO" >
+    update T_PRODUCT_INFO
+    <set >
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productContent != null" >
+        product_content = #{productContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productIcon != null" >
+        product_icon = #{productIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null" >
+        product_price = #{productPrice,jdbcType=INTEGER},
+      </if>
+      <if test="originalPrice != null" >
+        original_price = #{originalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null" >
+        cost_price = #{costPrice,jdbcType=INTEGER},
+      </if>
+      <if test="productStatus != null" >
+        product_status = #{productStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productFlag != null" >
+        product_flag = #{productFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="preferentialType != null" >
+        preferential_type = #{preferentialType,jdbcType=INTEGER},
+      </if>
+      <if test="operatorType != null" >
+        operator_type = #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        card_type = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardCode != null" >
+        card_code = #{cardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelNumber != null" >
+        channel_number = #{channelNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceType != null" >
+        interface_type = #{interfaceType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stockNumber != null" >
+        stock_number = #{stockNumber,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numberType != null" >
+        number_type = #{numberType,jdbcType=INTEGER},
+      </if>
+      <if test="expiryDate != null" >
+        expiry_date = #{expiryDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weein.bigdata.base.entity.ProductInfoDO" >
+    update T_PRODUCT_INFO
+    set product_id = #{productId,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_content = #{productContent,jdbcType=VARCHAR},
+      product_icon = #{productIcon,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=INTEGER},
+      product_price = #{productPrice,jdbcType=INTEGER},
+      original_price = #{originalPrice,jdbcType=INTEGER},
+      cost_price = #{costPrice,jdbcType=INTEGER},
+      product_status = #{productStatus,jdbcType=INTEGER},
+      product_flag = #{productFlag,jdbcType=VARCHAR},
+      preferential_type = #{preferentialType,jdbcType=INTEGER},
+      operator_type = #{operatorType,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=VARCHAR},
+      card_code = #{cardCode,jdbcType=VARCHAR},
+      channel_number = #{channelNumber,jdbcType=VARCHAR},
+      interface_type = #{interfaceType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      stock_number = #{stockNumber,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      number_type = #{numberType,jdbcType=INTEGER},
+      expiry_date = #{expiryDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_PRODUCT_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null" >
+         and product_id= #{productId,jdbcType=VARCHAR}
+      </if>
+      <if test="productName != null" >
+         and product_name= #{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="productContent != null" >
+         and product_content= #{productContent,jdbcType=VARCHAR}
+      </if>
+      <if test="productIcon != null" >
+         and product_icon= #{productIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="productType != null" >
+         and product_type= #{productType,jdbcType=INTEGER}
+      </if>
+      <if test="productPrice != null" >
+         and product_price= #{productPrice,jdbcType=INTEGER}
+      </if>
+      <if test="originalPrice != null" >
+         and original_price= #{originalPrice,jdbcType=INTEGER}
+      </if>
+      <if test="costPrice != null" >
+         and cost_price= #{costPrice,jdbcType=INTEGER}
+      </if>
+      <if test="productStatus != null" >
+         and product_status= #{productStatus,jdbcType=INTEGER}
+      </if>
+      <if test="productFlag != null" >
+         and product_flag= #{productFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="preferentialType != null" >
+         and preferential_type= #{preferentialType,jdbcType=INTEGER}
+      </if>
+      <if test="operatorType != null" >
+         and operator_type= #{operatorType,jdbcType=VARCHAR}
+      </if>
+      <if test="itemId != null" >
+         and item_id= #{itemId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardType != null" >
+         and card_type= #{cardType,jdbcType=VARCHAR}
+      </if>
+      <if test="cardCode != null" >
+         and card_code= #{cardCode,jdbcType=VARCHAR}
+      </if>
+      <if test="channelNumber != null" >
+         and channel_number= #{channelNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="interfaceType != null" >
+         and interface_type= #{interfaceType,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="stockNumber != null" >
+         and stock_number= #{stockNumber,jdbcType=INTEGER}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="numberType != null" >
+         and number_type= #{numberType,jdbcType=INTEGER}
+      </if>
+      <if test="expiryDate != null" >
+         and expiry_date= #{expiryDate,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+  </select>
+  <select id="selectPageList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_PRODUCT_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null" >
+         and product_id= #{productId,jdbcType=VARCHAR}
+      </if>
+      <if test="productName != null" >
+         and product_name= #{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="productContent != null" >
+         and product_content= #{productContent,jdbcType=VARCHAR}
+      </if>
+      <if test="productIcon != null" >
+         and product_icon= #{productIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="productType != null" >
+         and product_type= #{productType,jdbcType=INTEGER}
+      </if>
+      <if test="productPrice != null" >
+         and product_price= #{productPrice,jdbcType=INTEGER}
+      </if>
+      <if test="originalPrice != null" >
+         and original_price= #{originalPrice,jdbcType=INTEGER}
+      </if>
+      <if test="costPrice != null" >
+         and cost_price= #{costPrice,jdbcType=INTEGER}
+      </if>
+      <if test="productStatus != null" >
+         and product_status= #{productStatus,jdbcType=INTEGER}
+      </if>
+      <if test="productFlag != null" >
+         and product_flag= #{productFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="preferentialType != null" >
+         and preferential_type= #{preferentialType,jdbcType=INTEGER}
+      </if>
+      <if test="operatorType != null" >
+         and operator_type= #{operatorType,jdbcType=VARCHAR}
+      </if>
+      <if test="itemId != null" >
+         and item_id= #{itemId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardType != null" >
+         and card_type= #{cardType,jdbcType=VARCHAR}
+      </if>
+      <if test="cardCode != null" >
+         and card_code= #{cardCode,jdbcType=VARCHAR}
+      </if>
+      <if test="channelNumber != null" >
+         and channel_number= #{channelNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="interfaceType != null" >
+         and interface_type= #{interfaceType,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="stockNumber != null" >
+         and stock_number= #{stockNumber,jdbcType=INTEGER}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="numberType != null" >
+         and number_type= #{numberType,jdbcType=INTEGER}
+      </if>
+      <if test="expiryDate != null" >
+         and expiry_date= #{expiryDate,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+    <if test="page != null" >
+      <![CDATA[  limit #{page.begin}, #{page.length} ]]>
+    </if>
+  </select>
+  <select id="selectCount" resultType="int" parameterType="java.util.Map" >
+     select
+     count(1)
+     from 
+     T_PRODUCT_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null" >
+         and product_id= #{productId,jdbcType=VARCHAR}
+      </if>
+      <if test="productName != null" >
+         and product_name= #{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="productContent != null" >
+         and product_content= #{productContent,jdbcType=VARCHAR}
+      </if>
+      <if test="productIcon != null" >
+         and product_icon= #{productIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="productType != null" >
+         and product_type= #{productType,jdbcType=INTEGER}
+      </if>
+      <if test="productPrice != null" >
+         and product_price= #{productPrice,jdbcType=INTEGER}
+      </if>
+      <if test="originalPrice != null" >
+         and original_price= #{originalPrice,jdbcType=INTEGER}
+      </if>
+      <if test="costPrice != null" >
+         and cost_price= #{costPrice,jdbcType=INTEGER}
+      </if>
+      <if test="productStatus != null" >
+         and product_status= #{productStatus,jdbcType=INTEGER}
+      </if>
+      <if test="productFlag != null" >
+         and product_flag= #{productFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="preferentialType != null" >
+         and preferential_type= #{preferentialType,jdbcType=INTEGER}
+      </if>
+      <if test="operatorType != null" >
+         and operator_type= #{operatorType,jdbcType=VARCHAR}
+      </if>
+      <if test="itemId != null" >
+         and item_id= #{itemId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardType != null" >
+         and card_type= #{cardType,jdbcType=VARCHAR}
+      </if>
+      <if test="cardCode != null" >
+         and card_code= #{cardCode,jdbcType=VARCHAR}
+      </if>
+      <if test="channelNumber != null" >
+         and channel_number= #{channelNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="interfaceType != null" >
+         and interface_type= #{interfaceType,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="stockNumber != null" >
+         and stock_number= #{stockNumber,jdbcType=INTEGER}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="numberType != null" >
+         and number_type= #{numberType,jdbcType=INTEGER}
+      </if>
+      <if test="expiryDate != null" >
+         and expiry_date= #{expiryDate,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.weein.bigdata.base.entity.ProductInfoDO" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_PRODUCT_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null" >
+         and product_id= #{productId,jdbcType=VARCHAR}
+      </if>
+      <if test="productName != null" >
+         and product_name= #{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="productContent != null" >
+         and product_content= #{productContent,jdbcType=VARCHAR}
+      </if>
+      <if test="productIcon != null" >
+         and product_icon= #{productIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="productType != null" >
+         and product_type= #{productType,jdbcType=INTEGER}
+      </if>
+      <if test="productPrice != null" >
+         and product_price= #{productPrice,jdbcType=INTEGER}
+      </if>
+      <if test="originalPrice != null" >
+         and original_price= #{originalPrice,jdbcType=INTEGER}
+      </if>
+      <if test="costPrice != null" >
+         and cost_price= #{costPrice,jdbcType=INTEGER}
+      </if>
+      <if test="productStatus != null" >
+         and product_status= #{productStatus,jdbcType=INTEGER}
+      </if>
+      <if test="productFlag != null" >
+         and product_flag= #{productFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="preferentialType != null" >
+         and preferential_type= #{preferentialType,jdbcType=INTEGER}
+      </if>
+      <if test="operatorType != null" >
+         and operator_type= #{operatorType,jdbcType=VARCHAR}
+      </if>
+      <if test="itemId != null" >
+         and item_id= #{itemId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardType != null" >
+         and card_type= #{cardType,jdbcType=VARCHAR}
+      </if>
+      <if test="cardCode != null" >
+         and card_code= #{cardCode,jdbcType=VARCHAR}
+      </if>
+      <if test="channelNumber != null" >
+         and channel_number= #{channelNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="interfaceType != null" >
+         and interface_type= #{interfaceType,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="stockNumber != null" >
+         and stock_number= #{stockNumber,jdbcType=INTEGER}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="numberType != null" >
+         and number_type= #{numberType,jdbcType=INTEGER}
+      </if>
+      <if test="expiryDate != null" >
+         and expiry_date= #{expiryDate,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

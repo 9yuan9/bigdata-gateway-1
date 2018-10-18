@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>  
+		<groupId>com.weein.bigdata</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>bigdata-gateway</artifactId>
+	<packaging>pom</packaging>
+	<groupId>com.weein.bigdata</groupId>
+	<name>data-of-marketing-gateway</name>
+	<modules>
+		<module>public</module>
+		<module>bigdata-service</module>
+		<module>bigdata-web</module>
+		<module>bigdata-task</module>
+		<!-- <module>mp-public</module> -->
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.weein.bigdata</groupId>
+				<artifactId>bigdata-base</artifactId>
+				<version>${weein.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.weein.bigdata</groupId>
+				<artifactId>bigdata-core</artifactId>
+				<version>${weein.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.weein.bigdata</groupId>
+				<artifactId>bigdata-dao</artifactId>
+				<version>${weein.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+</project>

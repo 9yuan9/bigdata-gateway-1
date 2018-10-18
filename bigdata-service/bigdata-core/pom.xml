@@ -1,0 +1,91 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>bigdata-service</artifactId>
+		<groupId>com.weein.bigdata</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>bigdata-core</artifactId>
+	<name>bigdata-core</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.weein.bigdata</groupId>
+			<artifactId>bigdata-dao</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.weein.bigdata</groupId>
+			<artifactId>bigdata-base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.weein</groupId>
+			<artifactId>mp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-social-linkedin</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.kennycason</groupId>
+			<artifactId>kumo-core</artifactId>
+			<version>1.13</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+
+		</dependency>
+		<dependency>
+			<groupId>com.kennycason</groupId>
+			<artifactId>kumo-tokenizers</artifactId>
+			<version>1.12</version>
+
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.weein.bigdata</groupId>
+			<artifactId>linkoopdb-jdbc</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.alibaba.citrus.tool</groupId>
+				<artifactId>autoconfig-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

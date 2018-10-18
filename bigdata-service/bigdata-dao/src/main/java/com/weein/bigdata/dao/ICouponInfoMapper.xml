@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weein.bigdata.dao.ICouponInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.weein.bigdata.base.entity.CouponInfoDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="coupon_id" property="couponId" jdbcType="VARCHAR" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="coupon_name" property="couponName" jdbcType="VARCHAR" />
+    <result column="coupon_desc" property="couponDesc" jdbcType="VARCHAR" />
+    <result column="coupon_icon" property="couponIcon" jdbcType="VARCHAR" />
+    <result column="coupon_type" property="couponType" jdbcType="INTEGER" />
+    <result column="cardType" property="cardtype" jdbcType="INTEGER" />
+    <result column="coupon_data" property="couponData" jdbcType="INTEGER" />
+    <result column="coupon_status" property="couponStatus" jdbcType="INTEGER" />
+    <result column="coupon_threshold" property="couponThreshold" jdbcType="INTEGER" />
+    <result column="effective_date" property="effectiveDate" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, coupon_id, card_id, coupon_name, coupon_desc, coupon_icon, coupon_type, cardType, 
+    coupon_data, coupon_status, coupon_threshold, effective_date, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_COUPON_INFO
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_COUPON_INFO
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.weein.bigdata.base.entity.CouponInfoDO" >
+    insert into T_COUPON_INFO (id, coupon_id, card_id, 
+      coupon_name, coupon_desc, coupon_icon, 
+      coupon_type, cardType, coupon_data, 
+      coupon_status, coupon_threshold, effective_date, 
+      create_time, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{couponId,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{couponName,jdbcType=VARCHAR}, #{couponDesc,jdbcType=VARCHAR}, #{couponIcon,jdbcType=VARCHAR}, 
+      #{couponType,jdbcType=INTEGER}, #{cardtype,jdbcType=INTEGER}, #{couponData,jdbcType=INTEGER}, 
+      #{couponStatus,jdbcType=INTEGER}, #{couponThreshold,jdbcType=INTEGER}, #{effectiveDate,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weein.bigdata.base.entity.CouponInfoDO" >
+    insert into T_COUPON_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="couponName != null" >
+        coupon_name,
+      </if>
+      <if test="couponDesc != null" >
+        coupon_desc,
+      </if>
+      <if test="couponIcon != null" >
+        coupon_icon,
+      </if>
+      <if test="couponType != null" >
+        coupon_type,
+      </if>
+      <if test="cardtype != null" >
+        cardType,
+      </if>
+      <if test="couponData != null" >
+        coupon_data,
+      </if>
+      <if test="couponStatus != null" >
+        coupon_status,
+      </if>
+      <if test="couponThreshold != null" >
+        coupon_threshold,
+      </if>
+      <if test="effectiveDate != null" >
+        effective_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponName != null" >
+        #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponDesc != null" >
+        #{couponDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="couponIcon != null" >
+        #{couponIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null" >
+        #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="cardtype != null" >
+        #{cardtype,jdbcType=INTEGER},
+      </if>
+      <if test="couponData != null" >
+        #{couponData,jdbcType=INTEGER},
+      </if>
+      <if test="couponStatus != null" >
+        #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="couponThreshold != null" >
+        #{couponThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="effectiveDate != null" >
+        #{effectiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weein.bigdata.base.entity.CouponInfoDO" >
+    update T_COUPON_INFO
+    <set >
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponName != null" >
+        coupon_name = #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponDesc != null" >
+        coupon_desc = #{couponDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="couponIcon != null" >
+        coupon_icon = #{couponIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null" >
+        coupon_type = #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="cardtype != null" >
+        cardType = #{cardtype,jdbcType=INTEGER},
+      </if>
+      <if test="couponData != null" >
+        coupon_data = #{couponData,jdbcType=INTEGER},
+      </if>
+      <if test="couponStatus != null" >
+        coupon_status = #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="couponThreshold != null" >
+        coupon_threshold = #{couponThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="effectiveDate != null" >
+        effective_date = #{effectiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weein.bigdata.base.entity.CouponInfoDO" >
+    update T_COUPON_INFO
+    set coupon_id = #{couponId,jdbcType=VARCHAR},
+      card_id = #{cardId,jdbcType=VARCHAR},
+      coupon_name = #{couponName,jdbcType=VARCHAR},
+      coupon_desc = #{couponDesc,jdbcType=VARCHAR},
+      coupon_icon = #{couponIcon,jdbcType=VARCHAR},
+      coupon_type = #{couponType,jdbcType=INTEGER},
+      cardType = #{cardtype,jdbcType=INTEGER},
+      coupon_data = #{couponData,jdbcType=INTEGER},
+      coupon_status = #{couponStatus,jdbcType=INTEGER},
+      coupon_threshold = #{couponThreshold,jdbcType=INTEGER},
+      effective_date = #{effectiveDate,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_COUPON_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="couponId != null" >
+         and coupon_id= #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardId != null" >
+         and card_id= #{cardId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponName != null" >
+         and coupon_name= #{couponName,jdbcType=VARCHAR}
+      </if>
+      <if test="couponDesc != null" >
+         and coupon_desc= #{couponDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="couponIcon != null" >
+         and coupon_icon= #{couponIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="couponType != null" >
+         and coupon_type= #{couponType,jdbcType=INTEGER}
+      </if>
+      <if test="cardtype != null" >
+         and cardType= #{cardtype,jdbcType=INTEGER}
+      </if>
+      <if test="couponData != null" >
+         and coupon_data= #{couponData,jdbcType=INTEGER}
+      </if>
+      <if test="couponStatus != null" >
+         and coupon_status= #{couponStatus,jdbcType=INTEGER}
+      </if>
+      <if test="couponThreshold != null" >
+         and coupon_threshold= #{couponThreshold,jdbcType=INTEGER}
+      </if>
+      <if test="effectiveDate != null" >
+         and effective_date= #{effectiveDate,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+  </select>
+  <select id="selectPageList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_COUPON_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="couponId != null" >
+         and coupon_id= #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardId != null" >
+         and card_id= #{cardId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponName != null" >
+         and coupon_name= #{couponName,jdbcType=VARCHAR}
+      </if>
+      <if test="couponDesc != null" >
+         and coupon_desc= #{couponDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="couponIcon != null" >
+         and coupon_icon= #{couponIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="couponType != null" >
+         and coupon_type= #{couponType,jdbcType=INTEGER}
+      </if>
+      <if test="cardtype != null" >
+         and cardType= #{cardtype,jdbcType=INTEGER}
+      </if>
+      <if test="couponData != null" >
+         and coupon_data= #{couponData,jdbcType=INTEGER}
+      </if>
+      <if test="couponStatus != null" >
+         and coupon_status= #{couponStatus,jdbcType=INTEGER}
+      </if>
+      <if test="couponThreshold != null" >
+         and coupon_threshold= #{couponThreshold,jdbcType=INTEGER}
+      </if>
+      <if test="effectiveDate != null" >
+         and effective_date= #{effectiveDate,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+    <if test="page != null" >
+      <![CDATA[  limit #{page.begin}, #{page.length} ]]>
+    </if>
+  </select>
+  <select id="selectCount" resultType="int" parameterType="java.util.Map" >
+     select
+     count(1)
+     from 
+     T_COUPON_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="couponId != null" >
+         and coupon_id= #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardId != null" >
+         and card_id= #{cardId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponName != null" >
+         and coupon_name= #{couponName,jdbcType=VARCHAR}
+      </if>
+      <if test="couponDesc != null" >
+         and coupon_desc= #{couponDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="couponIcon != null" >
+         and coupon_icon= #{couponIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="couponType != null" >
+         and coupon_type= #{couponType,jdbcType=INTEGER}
+      </if>
+      <if test="cardtype != null" >
+         and cardType= #{cardtype,jdbcType=INTEGER}
+      </if>
+      <if test="couponData != null" >
+         and coupon_data= #{couponData,jdbcType=INTEGER}
+      </if>
+      <if test="couponStatus != null" >
+         and coupon_status= #{couponStatus,jdbcType=INTEGER}
+      </if>
+      <if test="couponThreshold != null" >
+         and coupon_threshold= #{couponThreshold,jdbcType=INTEGER}
+      </if>
+      <if test="effectiveDate != null" >
+         and effective_date= #{effectiveDate,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.weein.bigdata.base.entity.CouponInfoDO" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_COUPON_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="couponId != null" >
+         and coupon_id= #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="cardId != null" >
+         and card_id= #{cardId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponName != null" >
+         and coupon_name= #{couponName,jdbcType=VARCHAR}
+      </if>
+      <if test="couponDesc != null" >
+         and coupon_desc= #{couponDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="couponIcon != null" >
+         and coupon_icon= #{couponIcon,jdbcType=VARCHAR}
+      </if>
+      <if test="couponType != null" >
+         and coupon_type= #{couponType,jdbcType=INTEGER}
+      </if>
+      <if test="cardtype != null" >
+         and cardType= #{cardtype,jdbcType=INTEGER}
+      </if>
+      <if test="couponData != null" >
+         and coupon_data= #{couponData,jdbcType=INTEGER}
+      </if>
+      <if test="couponStatus != null" >
+         and coupon_status= #{couponStatus,jdbcType=INTEGER}
+      </if>
+      <if test="couponThreshold != null" >
+         and coupon_threshold= #{couponThreshold,jdbcType=INTEGER}
+      </if>
+      <if test="effectiveDate != null" >
+         and effective_date= #{effectiveDate,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

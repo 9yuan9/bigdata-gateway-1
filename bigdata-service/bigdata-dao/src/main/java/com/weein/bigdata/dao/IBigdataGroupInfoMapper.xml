@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weein.bigdata.dao.IBigdataGroupInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.weein.bigdata.base.entity.BigdataGroupInfoDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_id, type, status, description, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BIGDATA_GROUP_INFO
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_BIGDATA_GROUP_INFO
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.weein.bigdata.base.entity.BigdataGroupInfoDO" >
+    insert into T_BIGDATA_GROUP_INFO (id, group_id, type, 
+      status, description, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weein.bigdata.base.entity.BigdataGroupInfoDO" >
+    insert into T_BIGDATA_GROUP_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weein.bigdata.base.entity.BigdataGroupInfoDO" >
+    update T_BIGDATA_GROUP_INFO
+    <set >
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weein.bigdata.base.entity.BigdataGroupInfoDO" >
+    update T_BIGDATA_GROUP_INFO
+    set group_id = #{groupId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_BIGDATA_GROUP_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+         and type= #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="description != null" >
+         and description= #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+  </select>
+  <select id="selectPageList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_BIGDATA_GROUP_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+         and type= #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="description != null" >
+         and description= #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+    <if test="page != null" >
+      <![CDATA[  limit #{page.begin}, #{page.length} ]]>
+    </if>
+  </select>
+  <select id="selectCount" resultType="int" parameterType="java.util.Map" >
+     select
+     count(1)
+     from 
+     T_BIGDATA_GROUP_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+         and type= #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="description != null" >
+         and description= #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.weein.bigdata.base.entity.BigdataGroupInfoDO" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_BIGDATA_GROUP_INFO
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+         and type= #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="description != null" >
+         and description= #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

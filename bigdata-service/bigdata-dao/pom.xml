@@ -1,0 +1,29 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>bigdata-service</artifactId>
+		<groupId>com.weein.bigdata</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>bigdata-dao</artifactId>
+	<name>bigdata-dao</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.weein.bigdata</groupId>
+			<artifactId>bigdata-base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+		    <plugin>
+				<groupId>com.alibaba.citrus.tool</groupId>
+				<artifactId>autoconfig-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+  </build>
+</project>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weein.bigdata.dao.IBigdataUserOfGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.weein.bigdata.base.entity.BigdataUserOfGroupDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone, open_id, group_id, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BIGDATA_USER_OF_GROUP
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_BIGDATA_USER_OF_GROUP
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.weein.bigdata.base.entity.BigdataUserOfGroupDO" >
+    insert into T_BIGDATA_USER_OF_GROUP (id, phone, open_id, 
+      group_id, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weein.bigdata.base.entity.BigdataUserOfGroupDO" >
+    insert into T_BIGDATA_USER_OF_GROUP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weein.bigdata.base.entity.BigdataUserOfGroupDO" >
+    update T_BIGDATA_USER_OF_GROUP
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weein.bigdata.base.entity.BigdataUserOfGroupDO" >
+    update T_BIGDATA_USER_OF_GROUP
+    set phone = #{phone,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_BIGDATA_USER_OF_GROUP
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="openId != null" >
+         and open_id= #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+  </select>
+  <select id="selectPageList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_BIGDATA_USER_OF_GROUP
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="openId != null" >
+         and open_id= #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+    <if test="page != null" >
+      <![CDATA[  limit #{page.begin}, #{page.length} ]]>
+    </if>
+  </select>
+  <select id="selectCount" resultType="int" parameterType="java.util.Map" >
+     select
+     count(1)
+     from 
+     T_BIGDATA_USER_OF_GROUP
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="openId != null" >
+         and open_id= #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.weein.bigdata.base.entity.BigdataUserOfGroupDO" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     T_BIGDATA_USER_OF_GROUP
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="openId != null" >
+         and open_id= #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupId != null" >
+         and group_id= #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+         and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>
